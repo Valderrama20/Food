@@ -79,7 +79,7 @@ recipes.get("/all", async (req, res) => {
 const Api = apiCompleta.results
 const Bd = await Recipe.findAll({include: Dieta})
 const datos = [...Api, ...Bd].map(e =>{
-  return  {id: e.id, title: e.title, image: e.image, diets: e.diets}
+  return  {id: e.id, title: e.title, image: e.image, diets: e.diets, healthScore: e.healthScore}
 })
 
 res.send(datos)

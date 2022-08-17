@@ -36,3 +36,31 @@ export const porNombre = (data) => (dispatch) => {
    var recipes2 = [...recipes.data.sort(ordenA_Z)]
     return dispatch({type: "Orden", payload: recipes2})
   }
+
+  ///////me ordena por peso de menor a mayor y viceversa\\\\\\\\\\\\\\
+
+export const porScore = (data) => (dispatch) => {
+  
+    var ordenScore = (a, z) => {
+      var peso1 = a.healthScore
+      var peso2 = z.healthScore
+      if (peso1 > peso2) {
+        return data === "D1_100" ? 1 : -1
+      }
+      if (peso1 < peso2) {
+        return data === "D1_100" ? -1 : 1
+      }
+      return 0
+    }
+    var score = [...recipes.data.sort(ordenScore)]
+    return dispatch({ type: "Orden", payload: score })
+  
+  }
+    ////// me filtra por dietas \\\\\
+
+export const filtrar = (data) => dispatch => {
+ const filtrado = recipes.data.filter(e => e.diets.includes(data) )
+
+return dispatch({type: "Filtro" , payload: filtrado})
+
+}

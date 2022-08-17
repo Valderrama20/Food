@@ -22,6 +22,11 @@ export default function rootReducer(state = initialState, action) {
             ...state,
             Cars: action.payload
         }
+        case "Filtro":
+            return {
+                ...state,
+                Cars: action.payload
+            }
         default:{
             return state
         }

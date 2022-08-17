@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { porNombre } from "../../Redux/actions";
+import { porNombre, porScore } from "../../Redux/actions";
 
 
 
@@ -12,8 +12,8 @@ const Ordenamiento = () => {
         switch (e.target.value) {
             case "A_Z": dispatch(porNombre("A_Z")); return
              case "Z_A": dispatch(porNombre("Z_A")) ; return
-            //   case "D100_1": dispatch(porScore(D100_1)); return
-            //    case "D1_100": dispatch(porScore(D1_100)); return
+               case "D100_1": dispatch(porScore("D100_1")); return
+               case "D1_100": dispatch(porScore("D1_100")); return
             default: console.log(null)
                 
         }
