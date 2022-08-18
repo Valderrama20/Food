@@ -17,6 +17,7 @@ const Home = () => {
         <ol>
             {Cars.map(e => {
                 return <Card key={e.id}
+                              id={e.id}
                               img={e.image}
                                name={e.title}
                                 diets={e.diets.map(e => `${e}, `)}/>

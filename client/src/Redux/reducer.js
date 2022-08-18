@@ -1,6 +1,8 @@
 const initialState = {
     Cars:[],
-    Diets:[]
+    Diets:[],
+    Detalle:{}
+
 }
 
 
@@ -26,6 +28,11 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 Cars: action.payload
+            }
+        case "Detalle":
+            return {
+                ...state,
+                Detalle: action.payload
             }
         default:{
             return state

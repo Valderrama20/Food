@@ -64,3 +64,11 @@ export const filtrar = (data) => dispatch => {
 return dispatch({type: "Filtro" , payload: filtrado})
 
 }
+      //// me trae el detalle\\\\\\
+
+export const detalleA = (data) => async dispatch =>{
+const detalle = await axios.get(`http://localhost:3001/recipes/detalle/${data}`)
+
+dispatch({type: "Detalle", payload: detalle.data})
+
+}

@@ -27,18 +27,20 @@ recipes.get("", async (req, res) => {
 
 recipes.get("/detalle/:id", async (req, res) => { 
     const {id} = req.params
-
+   console.log("estoy en api               ")
     const datosApi = apiCompleta.results
    const datosBd = await Recipe.findAll({include: Dieta})
 
    const e = [...datosApi, ...datosBd].find(e => e.id === id*1)
     
    if(!e) return res.send("no hay")
-   
-   var pasos = e.steps? e.steps: e.analyzedInstructions[0].steps.map(e => e.step)
+   var pasos
+   if(e.steps) pasos = e.steps
+   else if(e.analyzedInstructions.length) pasos = e.analyzedInstructions[0].steps.map(e => e.step)
+   else pasos = null
                                             
     var arreglo ={img: e.image,
-                name: e.title || e.name,
+                name: e.title ,
                 dishTypes: e.dishTypes,
                 diets: e.diets || e.Dieta,
                 summary: e.summary,
