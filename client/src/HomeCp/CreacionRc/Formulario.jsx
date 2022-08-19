@@ -10,7 +10,7 @@ const RE = {LN:/^[a-zA-Z\s]{4,200}$/,
 const Form = () => {
     const diets = useSelector(state => state.Diets) 
    const[data, setData] = useState({title: "", summary:"", healthScore:0, steps: "", })
-  
+     
    const set = (e) => {
         setData({...data, [e.target.name]: e.target.value })
 
@@ -58,13 +58,14 @@ const Form = () => {
     <form onSubmit={crear} >
         <label >Name</label>
         <input type="text" name="title" onChange={set} id="title"/>
+        <p id="Error_Title">tiene que tener mas de 4 caracteres y menos de 200 sin numeros ni signos especiales</p>
         <label htmlFor="" >Summary</label>
         <input type="text" name="summary" onChange={set} id="summary"/>
         <label htmlFor="" >Score</label>
         <input type="number" name="healthScore" onChange={set} id="healthScore"/>
         <label htmlFor="">Steps</label>
         <input type="text" name="steps" onChange={set} id="steps"/>
-         <input type="submit" />
+         <input type="submit" id="btn" disabled/>
     </form>
     <button onClick={() => console.log(diets2)}></button>
     <div>

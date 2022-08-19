@@ -2,6 +2,14 @@
  border: 2px solid red;
  outline: none;
  box-shadow: 2px 0px 20px rgba(163,163,163)
+ 
+}
+
+#Error_Title{
+    
+    font-size: 15px;
+    width: 300px;
+    display: block;
 }
 
 .usando:focus{
