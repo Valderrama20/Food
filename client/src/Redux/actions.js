@@ -59,7 +59,7 @@ export const porScore = (data) => (dispatch) => {
     ////// me filtra por dietas \\\\\
 
 export const filtrar = (data) => dispatch => {
- const filtrado = recipes.data.filter(e => e.diets.includes(data) )
+ const filtrado = recipes.data.filter(e => e.diets?e.diets.includes(data):null )
 
 return dispatch({type: "Filtro" , payload: filtrado})
 

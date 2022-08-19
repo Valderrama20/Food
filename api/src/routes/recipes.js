@@ -58,7 +58,7 @@ recipes.get("/detalle/:id", async (req, res) => {
 
 recipes.post("", async (req, res) => { 
  const {title,summary,healthScore,steps,diets} = req.body
- if(!name || !summary) return res.send("faltan Datos")
+ if(!title || !summary) return res.send("faltan Datos")
 
  try {
   const creado = await Recipe.create({title,summary,healthScore,steps}) 
@@ -76,6 +76,7 @@ console.log(e)
     res.send("Creado con exito")
 })
           //rutas adicionales
+          
 ///////////todas las recetas \\\\\\
 recipes.get("/all", async (req, res) => {
 const Api = apiCompleta.results

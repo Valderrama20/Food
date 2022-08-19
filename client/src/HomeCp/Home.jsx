@@ -3,7 +3,7 @@ import Card from "./Card";
 import { recipesAll } from "../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Nav from "./Nav";
-
+import { Link } from "react-router-dom";
 const Home = () => {
     const dispatch = useDispatch()
     useEffect(() => {dispatch(recipesAll)}, [dispatch])
@@ -12,15 +12,16 @@ const Home = () => {
     if(Cars.length)
     return(
         <>
-        <button onClick={() => console.log(Cars)}>Cars</button>
+        <Link to="/Formulario">Formulario</Link>
         <Nav/>
         <ol>
             {Cars.map(e => {
+                 var dietas = e.diets? e.diets: null
                 return <Card key={e.id}
                               id={e.id}
                               img={e.image}
                                name={e.title}
-                                diets={e.diets.map(e => `${e}, `)}/>
+                                diets={dietas}/>
             })}
         </ol>
         </>

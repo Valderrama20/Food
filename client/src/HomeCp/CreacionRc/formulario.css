@@ -1,0 +1,11 @@
+.Error{
+ border: 2px solid red;
+ outline: none;
+ box-shadow: 2px 0px 20px rgba(163,163,163)
+}
+
+.usando:focus{
+    border: 2px solid #007aff;
+    outline: none;
+    box-shadow: 2px 0px 20px rgba(163,163,163)
+}
