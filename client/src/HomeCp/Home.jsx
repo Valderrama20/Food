@@ -4,10 +4,13 @@ import { recipesAll } from "../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Nav from "./Nav";
 import { Link } from "react-router-dom";
+import Paginado from "./Paginado";
 const Home = () => {
     const dispatch = useDispatch()
     useEffect(() => {dispatch(recipesAll)}, [dispatch])
-    const Cars = useSelector(state => state.Cars)
+    const Cars = useSelector(state => state.Paginado)
+    
+    
 
     if(Cars.length)
     return(
@@ -24,6 +27,7 @@ const Home = () => {
                                 diets={dietas}/>
             })}
         </ol>
+        <Paginado/>
         </>
     )
     else return "Cargando"

@@ -72,3 +72,9 @@ const detalle = await axios.get(`http://localhost:3001/recipes/detalle/${data}`)
 dispatch({type: "Detalle", payload: detalle.data})
 
 }
+
+export const paginado9 = (data) => dispatch => {
+
+  dispatch({type:"siguienteP", payload: data})
+
+}

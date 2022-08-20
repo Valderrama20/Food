@@ -40,8 +40,12 @@ const Form = () => {
 
             default:
                 break;
+
         }     
-        
+        /// me deshabilita o activa el boton para crear  
+        var si = document.getElementById("btn")
+        if(RE.LN.test(data.title) && RE.L2.test(data.summary)) si.disabled = false
+        else si.disabled = true
         
             
     }

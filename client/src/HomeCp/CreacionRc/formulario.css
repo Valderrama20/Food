@@ -5,10 +5,13 @@
  
 }
 
-#Error_Title{
+.Error_Title{
     
     font-size: 15px;
     width: 300px;
+    display: block;
+}
+.Error_Title-active{
     display: block;
 }
 

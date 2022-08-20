@@ -1,4 +1,5 @@
 const initialState = {
+    Paginado:[],
     Cars:[],
     Diets:[],
     Detalle:{}
@@ -12,6 +13,7 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 Cars: action.payload.recipes,
+                Paginado: action.payload.recipes.splice(0,8),
                 Diets: action.payload.diets
             }
         case "Busqueda":
@@ -33,6 +35,11 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 Detalle: action.payload
+            }
+        case "siguienteP":
+            return{
+                ...state,
+                Paginado: action.payload
             }
         default:{
             return state
