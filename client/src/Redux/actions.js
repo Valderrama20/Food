@@ -61,7 +61,8 @@ export const porScore = (data) => (dispatch) => {
 export const filtrar = (data) => dispatch => {
  const filtrado = recipes.data.filter(e => e.diets?e.diets.includes(data):null )
 
-return dispatch({type: "Filtro" , payload: filtrado})
+dispatch({type: "Filtro" , payload: filtrado})
+console.log("filtro activado")
 
 }
       //// me trae el detalle\\\\\\

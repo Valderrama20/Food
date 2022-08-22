@@ -14,7 +14,8 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 Cars: action.payload.recipes,
                 Paginado: action.payload.recipes.splice(0,8),
-                Diets: action.payload.diets
+                Diets: action.payload.diets,
+                Detalle: {}
             }
         case "Busqueda":
         return {

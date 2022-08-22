@@ -8,7 +8,11 @@ import Paginado from "./Paginado";
 const Home = () => {
     const dispatch = useDispatch()
     useEffect(() => {dispatch(recipesAll)}, [dispatch])
-    const Cars = useSelector(state => state.Paginado)
+    
+     const Cars = useSelector(state => state.Cars)
+
+    console.log(Cars)
+    
     
     
 
