@@ -30,20 +30,41 @@ const Form = () => {
 
            case "summary":
             var summary = document.getElementById("summary")
-            if(RE.L2.test(e.target.value)) summary.classList.remove(sty.Error)
-            else  summary.classList.add(sty.Error)
+            var error = document.getElementById("errorS")
+            if(RE.L2.test(e.target.value)){
+                summary.classList.remove(sty.Error)
+                error.classList.remove(sty.Error_TitleA)
+            }
+            else{  
+                summary.classList.add(sty.Error)
+                error.classList.add(sty.Error_TitleA)
+            }
 
                 break;
             case "healthScore":
             var healthScore = document.getElementById("healthScore")
-            if(RE.A0.test(e.target.value)) healthScore.classList.remove(sty.Error)
-            else  healthScore.classList.add(sty.Error)
+            var error = document.getElementById("errorH")
+            if(RE.A0.test(e.target.value)) {
+                healthScore.classList.remove(sty.Error)
+                error.classList.remove(sty.Error_TitleA)
+            }
+            else {
+                healthScore.classList.add(sty.Error)
+                error.classList.add(sty.Error_TitleA)
+            }
               break;
 
             case "steps":
               var steps = document.getElementById("steps")
-            if(RE.L2.test(e.target.value)) steps.classList.remove(sty.Error)
-            else  steps.classList.add(sty.Error)
+              var error = document.getElementById("errorSt")
+            if(RE.L2.test(e.target.value)) {
+                steps.classList.remove(sty.Error)
+                error.classList.remove(sty.Error_TitleA)
+            }
+            else {
+                 steps.classList.add(sty.Error)
+                 error.classList.add(sty.Error_TitleA)
+                }
 
             default:
                 break;
@@ -66,33 +87,43 @@ const Form = () => {
     }
     
     return <div className={sty.form}>
+
     <form onSubmit={crear} >
         <div className={sty.name}>
         <label >Name: </label>
         <input type="text" name="title" onChange={set} id="title"/>
         <p className={sty.Error_Title} id="errorT">Debe tener minimo 4 caracteres y maximo 200 sin numeros ni signos especiales</p>
         </div>
-        <div>
+
+        <div className={sty.name}>
         <label htmlFor="" >Summary: </label>
         <input type="text" name="summary" onChange={set} id="summary"/>
-        <p>Debe tener minimo 20 caracteres y maximo 500 sin numeros ni signos especiales</p>
+        <p className={sty.Error_Title} id={"errorS"}>Debe tener minimo 20 caracteres y maximo 500 sin numeros ni signos especiales</p>
         </div>
+
+         <div className={sty.name}>
         <label htmlFor="" >Score: </label>
         <input type="number" name="healthScore" onChange={set} id="healthScore"/>
-          <p> Solo se aceptan numereros del 0 al 100</p>
-        <div>
+          <p className={sty.Error_Title} id="errorH"> Solo se aceptan numereros del 0 al 100</p>
+        </div>
+
+        <div className={sty.name}>
         <label htmlFor="">Steps</label>
         <input type="text" name="steps" onChange={set} id="steps"/>
-        <p>Debe tener minimo 20 caracteres y maximo 500 sin numeros ni signos especiales</p>
+        <p className={sty.Error_Title} id="errorSt">Debe tener minimo 20 caracteres y maximo 500 sin numeros ni signos especiales</p>
         </div>
+        <label htmlFor=""> Diets: </label>
+        <div className={sty.steps}>
+            {diets.map(e => {
+                return <button onClick={() => diets2.push(e.id)} key={e.id} className={sty.step}>{e.name}</button>
+            })}
+        </div>
+        
          <input type="submit" id="btn" disabled/>
          
     </form>
-    <div>
-            {diets.map(e => {
-                return <button onClick={() => diets2.push(e.id)} key={e.id}>{e.name}</button>
-            })}
-        </div>
+       
+          
     </div>
 }
 

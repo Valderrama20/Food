@@ -2,6 +2,8 @@
  border: 2px solid red;
  outline: none;
  box-shadow: 1px 0px 10px red
+
+
  
 }
 
@@ -21,13 +23,30 @@
 }
 
 .form{
+    display: flex;
+   
+    text-align: center;
+    justify-content: center;
     border: 1px solid black;
     border-radius: 30px;
     max-width: auto;
-    margin: 50px;
+    width: 600px;
+    margin: 100px 300px ;
+    padding: 10px;
+
+
     
 }
 .name{
-    max-width: 300px;
     padding: 10px;
+}
+.step{
+margin: 5px;
+border-radius: 5px;
+background-color: white;
+   border: 1px solid black;
+}
+
+.step:hover{
+cursor: pointer;
 }

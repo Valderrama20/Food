@@ -1,0 +1,18 @@
+
+.nav{
+ border: 1px solid red;
+ padding: 20px;
+ 
+ border-radius: 10px;
+
+}
+
+.container{
+    background-image: url(./chef-logo-vector_20448-270.jpg);
+   
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 300px 50px;
+    
+}

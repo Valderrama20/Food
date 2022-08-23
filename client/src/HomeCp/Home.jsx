@@ -3,8 +3,9 @@ import Card from "./Card";
 import { recipesAll } from "../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Nav from "./Nav";
-import { Link } from "react-router-dom";
 import Paginado from "./Paginado";
+import sty from "./General_Css/Home.module.css"
+
 const Home = () => {
     const dispatch = useDispatch()
     useEffect(() => {dispatch(recipesAll)}, [dispatch])
@@ -18,9 +19,11 @@ const Home = () => {
 
     if(Cars.length)
     return(
-        <>
-        <Link to="/Formulario">Formulario</Link>
-        <Nav/>
+       <div className={sty.container}>
+        <nav className={sty.nav}> 
+        <Nav/> 
+        </nav>
+       
         <ol>
             {Cars.map(e => {
                  var dietas = e.diets? e.diets: null
@@ -32,7 +35,7 @@ const Home = () => {
             })}
         </ol>
         <Paginado/>
-        </>
+        </div>
     )
     else return "Cargando"
 }

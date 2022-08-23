@@ -1,9 +1,10 @@
 import React from "react";
-
 import { useDispatch } from "react-redux";
 import { serch } from "../Redux/actions";
 import Ordenamiento from "./Filtros_Ord/Ord";
 import Filtrado from "./Filtros_Ord/Filtros";
+import { Link } from "react-router-dom";
+
 
 const Nav = () => {
 
@@ -15,13 +16,14 @@ const Nav = () => {
   }
 
  return(
-    <>
+    <div>
      <Filtrado/>
      <Ordenamiento/>
-     <div>
-    <input type="text" onChange={info}/>
+    <input type="text" onChange={info}/> 
+    <Link to="/Formulario">
+      <button>Create Recipe</button>
+    </Link>
     </div>
-    </>
  )
 }
 

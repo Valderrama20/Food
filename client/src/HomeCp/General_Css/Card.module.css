@@ -1,0 +1,32 @@
+.Card{
+    
+    width: 200px;
+   height: auto;
+  
+  text-align: center;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 10px;
+  margin: 20px;
+  width: 300px;
+
+  background-color: white;
+  box-shadow: 0 10px 30px #000;  
+  border: 1px solid #ffffff40
+  
+
+}
+#Card{
+   -webkit-backdrop-filter: blur(15px);
+   backdrop-filter: blur(15px);
+   background-color: rgba(243, 243, 243, 0.2);
+}
+
+.Card img{
+    max-width: 200px;
+    border-radius: 5px;
+}
+
+
+
+
