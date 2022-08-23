@@ -1,17 +1,16 @@
 .Error{
  border: 2px solid red;
  outline: none;
- box-shadow: 2px 0px 20px rgba(163,163,163)
+ box-shadow: 1px 0px 10px red
  
 }
 
 .Error_Title{
     
     font-size: 15px;
-    width: 300px;
-    display: block;
+    display: none;
 }
-.Error_Title-active{
+.Error_TitleA{
     display: block;
 }
 
@@ -19,4 +18,16 @@
     border: 2px solid #007aff;
     outline: none;
     box-shadow: 2px 0px 20px rgba(163,163,163)
+}
+
+.form{
+    border: 1px solid black;
+    border-radius: 30px;
+    max-width: auto;
+    margin: 50px;
+    
+}
+.name{
+    max-width: 300px;
+    padding: 10px;
 }

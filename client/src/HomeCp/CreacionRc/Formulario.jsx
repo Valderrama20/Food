@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import "./formulario.css"
+import sty from "./formulario.module.css"
 
 const RE = {LN:/^[a-zA-Z\s]{4,200}$/,
             L2:/^[a-zA-Z\s]{20,500}$/,
@@ -17,26 +17,33 @@ const Form = () => {
         switch (e.target.name) {
             case "title":
             var title = document.getElementById("title")
-            if(RE.LN.test(e.target.value)) title.classList.remove("Error")
-            else  title.classList.add("Error") 
+            var error = document.getElementById("errorT")
+
+            if(RE.LN.test(e.target.value) || e.target.value === "") {
+                title.classList.remove(sty.Error)
+                error.classList.remove(sty.Error_TitleA)}
+             else{
+                title.classList.add(sty.Error) 
+                error.classList.add(sty.Error_TitleA)
+            }
                 break;
 
            case "summary":
             var summary = document.getElementById("summary")
-            if(RE.L2.test(e.target.value)) summary.classList.remove("Error")
-            else  summary.classList.add("Error")
+            if(RE.L2.test(e.target.value)) summary.classList.remove(sty.Error)
+            else  summary.classList.add(sty.Error)
 
                 break;
             case "healthScore":
             var healthScore = document.getElementById("healthScore")
-            if(RE.A0.test(e.target.value)) healthScore.classList.remove("Error")
-            else  healthScore.classList.add("Error")
+            if(RE.A0.test(e.target.value)) healthScore.classList.remove(sty.Error)
+            else  healthScore.classList.add(sty.Error)
               break;
 
             case "steps":
               var steps = document.getElementById("steps")
-            if(RE.L2.test(e.target.value)) steps.classList.remove("Error")
-            else  steps.classList.add("Error")
+            if(RE.L2.test(e.target.value)) steps.classList.remove(sty.Error)
+            else  steps.classList.add(sty.Error)
 
             default:
                 break;
@@ -58,26 +65,35 @@ const Form = () => {
        console.log({...data, diets:diets2})
     }
     
-    return <>
+    return <div className={sty.form}>
     <form onSubmit={crear} >
-        <label >Name</label>
+        <div className={sty.name}>
+        <label >Name: </label>
         <input type="text" name="title" onChange={set} id="title"/>
-        <p id="Error_Title">tiene que tener mas de 4 caracteres y menos de 200 sin numeros ni signos especiales</p>
-        <label htmlFor="" >Summary</label>
+        <p className={sty.Error_Title} id="errorT">Debe tener minimo 4 caracteres y maximo 200 sin numeros ni signos especiales</p>
+        </div>
+        <div>
+        <label htmlFor="" >Summary: </label>
         <input type="text" name="summary" onChange={set} id="summary"/>
-        <label htmlFor="" >Score</label>
+        <p>Debe tener minimo 20 caracteres y maximo 500 sin numeros ni signos especiales</p>
+        </div>
+        <label htmlFor="" >Score: </label>
         <input type="number" name="healthScore" onChange={set} id="healthScore"/>
+          <p> Solo se aceptan numereros del 0 al 100</p>
+        <div>
         <label htmlFor="">Steps</label>
         <input type="text" name="steps" onChange={set} id="steps"/>
+        <p>Debe tener minimo 20 caracteres y maximo 500 sin numeros ni signos especiales</p>
+        </div>
          <input type="submit" id="btn" disabled/>
+         
     </form>
-    <button onClick={() => console.log(diets2)}></button>
     <div>
             {diets.map(e => {
                 return <button onClick={() => diets2.push(e.id)} key={e.id}>{e.name}</button>
             })}
         </div>
-    </>
+    </div>
 }
 
 export default Form

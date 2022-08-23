@@ -25,7 +25,11 @@ const Detalle_Rc = () =>  {
        <h3>{detalle.name}</h3>
        <img className={sty.img} src={detalle.img} alt="Food" />
        <h4>Steps:</h4>
+
+        <div className={sty.steps}>
        <ol>{detalle.steps?detalle.steps.map(e => {return <li key={e}>{e}</li>}): null}</ol>
+       </div>
+       
         </div>
 
         <div className={sty.right}>
