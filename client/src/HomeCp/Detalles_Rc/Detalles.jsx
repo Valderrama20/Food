@@ -12,7 +12,7 @@ const Detalle_Rc = () =>  {
         if(!Object.entries(detalle).length) dispatch(detalleA(url[url.length-1]*1)) 
     },[dispatch])
      var url = window.location.href.split("/")
-     
+     console.log(detalle)
      
    var re =/(<([^>]+)>)/ig
     if(detalle.summary) var eliminaTags = (detalle.summary.replace(re,""))

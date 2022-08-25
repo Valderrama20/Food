@@ -9,7 +9,8 @@ let diets
 export const recipesAll = async (dispatch) => {
  recipes = await axios.get("http://localhost:3001/recipes/all")
  diets = await axios.get("http://localhost:3001/diets")
-return dispatch({type:"Todas", payload: {recipes: recipes.data, diets: diets.data}})
+ dispatch({type:"Todas", payload: {recipes: recipes.data, diets: diets.data}})
+
 }
 
 export const serch = (name) => async dispatch => {
@@ -63,8 +64,9 @@ export const porScore = (data) => (dispatch) => {
     ////// me filtra por dietas \\\\\
 
 export const filtrar = (data) => dispatch => {
- const filtrado = recipes.data.filter(e => e.diets?e.diets.includes(data):null )
-
+ 
+ const filtrado = recipes.data.filter(e => typeof e.diets[0] === "string"?e.diets.includes(data):null
+ )
 dispatch({type: "Filtro" , payload: filtrado})
 console.log("filtro activado")
 init()

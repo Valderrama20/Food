@@ -12,7 +12,7 @@ recipes.get("", async (req, res) => {
     const {name} = req.query
 
    const datosApi = apiCompleta.results
-   const datosBd = await Recipe.findAll()
+   const datosBd = await Recipe.findAll({include: Dieta})
    const filter = [...datosApi, ...datosBd].filter(e => e.title.toLowerCase().includes(name.toLowerCase()))
    
    if(filter) res.send(filter)
@@ -35,8 +35,9 @@ recipes.get("/detalle/:id", async (req, res) => {
     
    if(!e) return res.send("no hay")
    var pasos
+   console.log(e.analyzedInstructions)
    if(e.steps) pasos = e.steps
-   else if(e.analyzedInstructions.length) pasos = e.analyzedInstructions[0].steps.map(e => e.step)
+   else if(e.analyzedInstructions && e.analyzedInstructions[0]) pasos = e.analyzedInstructions[0].steps.map(e => e.step)
    else pasos = null
                                             
     var arreglo ={id: e.id,
@@ -49,7 +50,7 @@ recipes.get("/detalle/:id", async (req, res) => {
                 steps: pasos
     }
     res.send(arreglo)
- 
+  
 })
 //POST /recipes:
 //Recibe los datos recolectados desde el formulario controlado
@@ -83,7 +84,7 @@ recipes.get("/all", async (req, res) => {
 const Api = apiCompleta.results
 const Bd = await Recipe.findAll({include: Dieta})
 const datos = [...Api, ...Bd].map(e =>{
-  return  {id: e.id, title: e.title, image: e.image, diets: e.diets, healthScore: e.healthScore}
+  return  {id: e.id, title: e.title, image: e.image, diets: e.diets || e.Dieta, healthScore: e.healthScore}
 })
 
 res.send(datos)

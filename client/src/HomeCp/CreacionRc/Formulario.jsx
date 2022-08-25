@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import sty from "./formulario.module.css"
+import { recipesAll } from "../../Redux/actions";
 
 const RE = {LN:/^[a-zA-Z\s]{4,200}$/,
             L2:/^[a-zA-Z\s]{20,500}$/,
             A0:/^(0|[1-9][0-9]?|100)$/}
 
 const Form = () => {
+    var dispatch = useDispatch()
+    useEffect(() => {dispatch(recipesAll)},[dispatch])
     const diets = useSelector(state => state.Diets) 
    const[data, setData] = useState({title: "", summary:"", healthScore:0, steps: "", })
      
@@ -84,7 +87,7 @@ const Form = () => {
     const crear = async (e) => {
         e.preventDefault()
        const creado = await axios.post("http://localhost:3001/recipes", {...data, diets:diets2})
-       console.log({...data, diets:diets2})
+       console.log(creado.data)
     }
 
     const Checked = () => {
