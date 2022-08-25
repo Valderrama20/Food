@@ -1,4 +1,6 @@
 import axios from "axios";
+import { init } from "../HomeCp/Paginado";
+
 
 
 let recipes
@@ -14,7 +16,7 @@ export const serch = (name) => async dispatch => {
  const busqueda = await axios.get(`http://localhost:3001/recipes?name=${name}`)
 
  if(!busqueda.data.length) dispatch({type: "Busqueda", payload: recipes.data})
- else dispatch({type:"Busqueda", payload: busqueda.data})
+ else dispatch({type:"Busqueda", payload: busqueda.data}); init()
 }
 
 //////////// me ordena por orden alfabetico de la "A" a la "Z" y viceversa\\\\\\\\\\\\
@@ -34,7 +36,8 @@ export const porNombre = (data) => (dispatch) => {
     }
     console.log(recipes)
    var recipes2 = [...recipes.data.sort(ordenA_Z)]
-    return dispatch({type: "Orden", payload: recipes2})
+    dispatch({type: "Orden", payload: recipes2})
+    init()
   }
 
   ///////me ordena por peso de menor a mayor y viceversa\\\\\\\\\\\\\\
@@ -53,8 +56,9 @@ export const porScore = (data) => (dispatch) => {
       return 0
     }
     var score = [...recipes.data.sort(ordenScore)]
-    return dispatch({ type: "Orden", payload: score })
-  
+     dispatch({ type: "Orden", payload: score })
+     init()
+
   }
     ////// me filtra por dietas \\\\\
 
@@ -63,12 +67,13 @@ export const filtrar = (data) => dispatch => {
 
 dispatch({type: "Filtro" , payload: filtrado})
 console.log("filtro activado")
-
+init()
 }
       //// me trae el detalle\\\\\\
 
 export const detalleA = (data) => async dispatch =>{
 const detalle = await axios.get(`http://localhost:3001/recipes/detalle/${data}`)
+console.log(detalle.data)
 
 dispatch({type: "Detalle", payload: detalle.data})
 

@@ -39,7 +39,8 @@ recipes.get("/detalle/:id", async (req, res) => {
    else if(e.analyzedInstructions.length) pasos = e.analyzedInstructions[0].steps.map(e => e.step)
    else pasos = null
                                             
-    var arreglo ={img: e.image,
+    var arreglo ={id: e.id,
+                img: e.image,
                 name: e.title ,
                 dishTypes: e.dishTypes,
                 diets: e.diets || e.Dieta,

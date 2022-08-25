@@ -40,6 +40,7 @@ const Form = () => {
                 error.classList.add(sty.Error_TitleA)
             }
 
+
                 break;
             case "healthScore":
             var healthScore = document.getElementById("healthScore")
@@ -77,13 +78,22 @@ const Form = () => {
         
             
     }
-    const diets2 = []
+    var diets2 = []
 
 
     const crear = async (e) => {
         e.preventDefault()
        const creado = await axios.post("http://localhost:3001/recipes", {...data, diets:diets2})
        console.log({...data, diets:diets2})
+    }
+
+    const Checked = () => {
+     diets2 = []
+     var si = document.querySelectorAll(".CheckBox")
+    for(const si2 of si){
+     if(si2.checked === true) diets2.push(si2.defaultValue*1)
+         }
+     console.log(diets2)
     }
     
     return <div className={sty.form}>
@@ -115,8 +125,9 @@ const Form = () => {
         <label htmlFor=""> Diets: </label>
         <div className={sty.steps}>
             {diets.map(e => {
-                return <button onClick={() => diets2.push(e.id)} key={e.id} className={sty.step}>{e.name}</button>
-            })}
+                return <><input type="checkBox" onClick={Checked} defaultValue={e.id} key={e.id} className="CheckBox" /> {e.name}</>
+            })
+              }
         </div>
         
          <input type="submit" id="btn" disabled/>

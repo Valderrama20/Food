@@ -16,7 +16,7 @@ const Detalle_Rc = () =>  {
      
    var re =/(<([^>]+)>)/ig
     if(detalle.summary) var eliminaTags = (detalle.summary.replace(re,""))
-
+     console.log(detalle)
     if(!Object.entries(detalle).length) return "cargando"
     else return (
        <>
@@ -27,7 +27,11 @@ const Detalle_Rc = () =>  {
        <h4>Steps:</h4>
 
         <div className={sty.steps}>
-       <ol>{detalle.steps?detalle.steps.map(e => {return <li key={e}>{e}</li>}): null}</ol>
+            {detalle.steps !== null?<ol>
+         {typeof detalle.steps === "string"? <li>{detalle.steps}</li>:(
+            detalle.steps.map(e => {return <li key={e}>{e}</li>})
+         )}
+        </ol>:null}
        </div>
        
         </div>
@@ -36,7 +40,9 @@ const Detalle_Rc = () =>  {
         <h4>Health Score:</h4> 
         <p>{detalle.score}</p>
         <h4>Diets:</h4>
-        <ol>{detalle.diets?detalle.diets.map(e => {return<li key={e}>{e}</li>}):null}</ol>
+        <ol>{typeof detalle.diets[0] === "string"?detalle.diets.map(e => {return<li key={e}>{e}</li>}):(
+           detalle.diets.map(e => {return <li key={e.name}>{e.name}</li>}) 
+        )}</ol>
         <h4>Summary:</h4>
         <p>{eliminaTags}</p>
         </div>

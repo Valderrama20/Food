@@ -1,26 +1,37 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { paginado9 } from "../Redux/actions";
 
 
+ var pagina = 0
+ var recipes = []
+  
+ let dispatch 
 
+ export const init = () => {
+    setTimeout(() => {
+        pagina = 0
+     dispatch(paginado9(recipes))}
+    ,200)
+  }
 
-const Paginado = () => {
+export const Paginado = () => {
 
-   const dispatch = useDispatch()
+    
+    dispatch = useDispatch()
    const D8 = useSelector((state) => state.Cars)
-   const [recipes, setRecipes] = useState([...D8].splice(0,8))
-   const [pagina, setPagina] = useState(0)
-
+   recipes = [...D8].splice(0,9)
+  
+  
 
    const  Siguiente = () => {
    const largo = D8.length
    const siguiente = pagina+1
-   const index = siguiente * 8
-   if(largo === index) return 
-   setRecipes([...D8].splice(index, 8))
-   setPagina(siguiente)
+   const index = siguiente * 9
+   if(largo < index) return 
+   recipes = [...D8].splice(index, 9)
+   pagina = siguiente
    console.log(recipes)
    dispatch(paginado9(recipes))
    }
@@ -30,17 +41,13 @@ const Paginado = () => {
 
    if(anterior < 0) return 
 
-    var index = anterior * 8
+    var index = anterior * 9
 
-    setRecipes([...D8].splice(index,8))
+    recipes = [...D8].splice(index,9)
+    console.log(recipes)
     dispatch(paginado9(recipes))
-    setPagina(anterior)
-
-   
-
+    pagina = anterior
    }
-
-
     return (
         <>
      <button onClick={Anterior}>Anterior</button>
@@ -50,4 +57,3 @@ const Paginado = () => {
     )
 }
 
-export default Paginado

@@ -1,9 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filtrar } from "../../Redux/actions";
+import { init } from "../Paginado";
 const Filtrado = () => {
 const diets = useSelector(state => state.Diets)
 const dispatch = useDispatch()
+
 const filtro = (e) => {
 
     dispatch(filtrar(e.target.value))

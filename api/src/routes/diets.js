@@ -8,11 +8,20 @@ diets.get("", async (req, res) => {
     const dietasBd = await Dieta.findAll()
     if(dietasBd.length) return res.send(dietasBd)
     else{
-    const dietas = await apiCompleta.results.map(e => e.diets)
-    const dietas2 = dietas.join().split(",")
-    const set = new Set(dietas2)
+    const dietas = [ "gluten free",
+         "dairy free"
+    ,"lacto ovo vegetarian"
+    ,"vegan"
+    ,"paleolithic"
+    ,"primal"
+    ,"whole "
+    ,"pescatarian"
+     ,"ketogenic"
+     ,"fodmap friendly"
+    ]
+
   try {
-    for (const d of [...set,"vegetarian"]) {
+    for (const d of dietas) {
         await Dieta.create({name: d})
     }
   } catch (e) {

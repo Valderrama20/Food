@@ -13,7 +13,7 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 Cars: action.payload.recipes,
-                Paginado: action.payload.recipes.splice(0,8),
+                Paginado: action.payload.recipes.splice(0,9),
                 Diets: action.payload.diets,
                 Detalle: {}
             }
@@ -33,6 +33,7 @@ export default function rootReducer(state = initialState, action) {
                 Cars: action.payload
             }
         case "Detalle":
+            console.log("estoy en detalles")
             return {
                 ...state,
                 Detalle: action.payload

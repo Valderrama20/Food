@@ -3,19 +3,14 @@ import Card from "./Card";
 import { recipesAll } from "../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Nav from "./Nav";
-import Paginado from "./Paginado";
+import{ Paginado }from "./Paginado";
 import sty from "./General_Css/Home.module.css"
 
 const Home = () => {
     const dispatch = useDispatch()
     useEffect(() => {dispatch(recipesAll)}, [dispatch])
     
-     const Cars = useSelector(state => state.Cars)
-
-    console.log(Cars)
-    
-    
-    
+     const Cars = useSelector(state => state.Paginado)
 
     if(Cars.length)
     return(
