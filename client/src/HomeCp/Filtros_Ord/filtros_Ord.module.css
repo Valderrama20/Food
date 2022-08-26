@@ -1,0 +1,13 @@
+.diets{
+    margin-top: 7px;
+    margin-right: 50px;
+    font-size: 15px;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+.diets:hover{
+    box-shadow: 0 5px 20px #000;  
+    text-decoration: none;
+    cursor: pointer;
+}

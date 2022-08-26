@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { porNombre, porScore } from "../../Redux/actions";
+import sty from "./filtros_Ord.module.css"
 
 
 
@@ -20,7 +21,7 @@ const Ordenamiento = () => {
       }
   return (
     <>
-    <select name="Orden" onChange={cambios}>
+    <select name="Orden" onChange={cambios} className={sty.diets}>
       <option value="A_Z">De A-Z</option>
       <option value="Z_A">De Z-A</option>
       <option value="D100_1">De 100-0</option>

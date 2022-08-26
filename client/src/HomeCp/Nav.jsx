@@ -21,19 +21,17 @@ const Nav = () => {
       <div className={sty.fi}>
            <Filtrado/>
       </div>
-      
-       <input type="text" onChange={info} className={sty.nav}/> 
-      
-
       <div className={sty.or}>
           <Ordenamiento/>  
       </div>
       
-     <div className={sty.fo}>
+      <input type="text" onChange={info} placeholder="Search..." className={sty.nav}/> 
+      
+     
        <Link to="/Formulario">
-      <button>Create Recipe</button>
+      <button className={sty.fo} >Create Recipe 🡲</button>
     </Link>
-     </div>
+     
     </div>
  )
 }

@@ -5,11 +5,39 @@
     padding: 20px;
     margin: 20px;
     justify-content: center;
+    background-color: white;
+    padding: 10px 50px 10px 50px;
+    box-shadow: 0 5px 20px #000; 
+   
 }
 .nav{
     
     border-radius: 20px;
+    padding: 10px;
     border: 0,5px solid black;
-    padding: 10px 100px 10px 100px;
-    margin: 0px 100px 0px 100px;
+    margin: 0px 140px 0px 50px;
+    transition:  1s;
+}
+.nav:focus{
+  
+  padding: 10px 50px 10px 50px;
+  outline: none;
+  box-shadow: 0 5px 20px #000;  
+ text-decoration: none;
+}
+
+.fo{
+    margin-top: 7px;
+   
+    border: 0.5px solid black;
+    border-radius: 10px;
+   font-size: 15px;
+   transition: 1s;
+}
+.fo:hover{
+
+    box-shadow: 0 5px 20px #000;  
+    text-decoration: none;
+    cursor: pointer;
+   
 }

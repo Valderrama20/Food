@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filtrar } from "../../Redux/actions";
-import { init } from "../Paginado";
+import sty from "./filtros_Ord.module.css"
+
 const Filtrado = () => {
 const diets = useSelector(state => state.Diets)
 const dispatch = useDispatch()
@@ -13,7 +14,8 @@ const filtro = (e) => {
 }
     return(
         <>
-         <select onChange={filtro}>
+         <select onChange={filtro} className={sty.diets}>
+            <option key="filtros">Score and Name</option>
           {diets.map(d => {return <option key={d.id}>{d.name}</option>})}
           </select>
         </>

@@ -11,9 +11,11 @@
     
     font-size: 15px;
     display: none;
+    
 }
 .Error_TitleA{
     display: block;
+    
 }
 
 .usando:focus{
@@ -40,11 +42,11 @@
 
 }
 
-#form{
+/* #form{
     -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
     background-color: rgba(243, 243, 243, 0.2);
-}
+} */
 
 .name{
     padding: 10px;

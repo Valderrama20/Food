@@ -1,18 +1,4 @@
-.container{
-    background-image: url(../General_Css/35737-comida.jpg);
-    background-attachment: fixed;
-     background-repeat: no-repeat;
-     background-size: cover;
-     width:100vw;
-     height:100vh;
 
-}
-
-/* #container{
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
-    background-color: rgba(243, 243, 243, 0.2);
-} */
 
 .img {   
 width: 400px;
@@ -25,6 +11,9 @@ border-radius: 20px;
     border: 1px solid black;
     border-radius: 30px;
     margin: 50px;
+    background-color: white;
+    box-shadow: 0 10px 30px #000;  
+    border: 1px solid #ffffff40
 
     
 }

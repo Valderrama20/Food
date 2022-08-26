@@ -2,27 +2,20 @@
 
    body{
    
-    /* background-image: url(./chef-logo-vector_20448-270.jpg);
-    background-size: contain;
+    background-image: url(./35737-comida.jpg);
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: 300px 50px; */
+   
 
-     /* */
+     
 
    }
 
    .container{
-       background-image: url(./35737-comida.jpg);
-      background-attachment: fixed;
-       background-repeat: no-repeat;
-     background-size: cover;
-      width:100vw;
-     height:100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-     text-align: center;
+      
+      text-align: center;
+      padding-top: 200px;
    }
    .wl{
       width: 300px;
