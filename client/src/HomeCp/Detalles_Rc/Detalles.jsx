@@ -18,8 +18,8 @@ const Detalle_Rc = () =>  {
     if(detalle.summary) var eliminaTags = (detalle.summary.replace(re,""))
      console.log(detalle)
     if(!Object.entries(detalle).length) return "cargando"
-    else return (
-       <>
+
+    else return <div className={sty.container} id={sty.container}>
         <div className={sty.detalle}>
         <div className={sty.left}>
        <h3>{detalle.name}</h3>
@@ -52,8 +52,9 @@ const Detalle_Rc = () =>  {
          <button className={sty.btn2}>Volver</button>
          </Link>
          </div>
-        </>
-    )
+           </div>
+
+    
 }
 
 export default Detalle_Rc

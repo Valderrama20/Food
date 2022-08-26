@@ -6,14 +6,15 @@ import sty from "./General_Css/Page.module.css"
 const Page = () => {
 return (
      <div className={sty.container}>
-      <div>
+      <div >
+           <h1 className={sty.h1}>PI Food</h1>
         <Link to="Home">
-        <button>Welcome</button>
+        <button className={sty.wl} >Welcome</button>
         </Link>
         </div>
         
      </div>
-)
-}
+ )
+} 
 
 export default Page

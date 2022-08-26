@@ -2,10 +2,47 @@
 
    body{
    
-    background-image: url(./chef-logo-vector_20448-270.jpg);
+    /* background-image: url(./chef-logo-vector_20448-270.jpg);
     background-size: contain;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: 300px 50px;
+    background-position: 300px 50px; */
+
+     /* */
+
+   }
+
+   .container{
+       background-image: url(./35737-comida.jpg);
+      background-attachment: fixed;
+       background-repeat: no-repeat;
+     background-size: cover;
+      width:100vw;
+     height:100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+     text-align: center;
+   }
+   .wl{
+      width: 300px;
+      font-size: 20px;
+      border-radius: 10px;
+      border: 1px solid black;
+      box-shadow: 0 10px 30px #000;  
+      border: 1px solid #ffffff40;
+     
+       transition: background-color, width 1s;
+     
+   }
+   .wl:hover{
+      cursor: pointer;
+      border: 1px solid white;
+      width: 400px;
+     
+   }
+   .h1{
+      font-size: 60px;
+      color: white;
    }
 

@@ -1,3 +1,16 @@
+.container{
+    background-color: white;
+    box-shadow: 0 10px 30px #000;  
+    border: 1px solid #ffffff40
+    
+}
+
+#container{
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    background-color: rgba(243, 243, 243, 0.2);
+}
+
 .img {   
 width: 400px;
 height: 300px;

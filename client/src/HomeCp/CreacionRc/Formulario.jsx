@@ -99,7 +99,7 @@ const Form = () => {
      console.log(diets2)
     }
     
-    return <div className={sty.form}>
+    return <div className={sty.form} id={sty.form}>
 
     <form onSubmit={crear} >
         <div className={sty.name}>
