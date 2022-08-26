@@ -4,6 +4,7 @@ import { serch } from "../Redux/actions";
 import Ordenamiento from "./Filtros_Ord/Ord";
 import Filtrado from "./Filtros_Ord/Filtros";
 import { Link } from "react-router-dom";
+import sty from "./General_Css/Nav.module.css"
 
 
 const Nav = () => {
@@ -16,13 +17,23 @@ const Nav = () => {
   }
 
  return(
-    <div>
-     <Filtrado/>
-     <Ordenamiento/>
-    <input type="text" onChange={info}/> 
-    <Link to="/Formulario">
+    <div className={sty.container}>
+      <div className={sty.fi}>
+           <Filtrado/>
+      </div>
+      
+       <input type="text" onChange={info} className={sty.nav}/> 
+      
+
+      <div className={sty.or}>
+          <Ordenamiento/>  
+      </div>
+      
+     <div className={sty.fo}>
+       <Link to="/Formulario">
       <button>Create Recipe</button>
     </Link>
+     </div>
     </div>
  )
 }

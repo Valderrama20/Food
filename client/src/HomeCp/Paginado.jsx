@@ -1,7 +1,7 @@
 import React from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 import { paginado9 } from "../Redux/actions";
+import sty from "./General_Css/Paginado.module.css"
 
 
  var pagina = 0
@@ -49,11 +49,13 @@ export const Paginado = () => {
     pagina = anterior
    }
     return (
-        <>
-     <button onClick={Anterior}>Anterior</button>
-     <label >Pagina: {pagina}</label>
-     <button onClick={Siguiente}>Siguiente</button>
-     </>
+        <div className={sty.container}>
+        
+     <button className={sty.btn} onClick={Anterior}>🡰</button>
+     <label className={sty.pagina}>Pagina: {pagina}</label>
+     <button className={sty.btn} onClick={Siguiente}>🡲</button>
+
+     </div>
     )
 }
 

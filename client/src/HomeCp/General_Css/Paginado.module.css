@@ -1,0 +1,22 @@
+.container{
+    text-align: center;
+}
+
+.btn{
+  border: 1px solid black;
+  border-radius: 30px;
+  width: 50px;
+  margin: 40px;
+  transition: 1s;
+
+}
+.btn:hover{
+
+border: 1px solid white;
+width: 70px;
+}
+
+.pagina{
+  font-size: 20px;
+  color: white;
+}
