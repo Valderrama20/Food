@@ -4,6 +4,7 @@ import sty from "./General_Css/Card.module.css"
 
 
 const Card = ({id, img, name ,diets}) => {
+
     return(
       <Link id="Link" to={`/Detalles/${id}`}>
       <div className={sty.Card} id={sty.Card}>

@@ -15,7 +15,10 @@ const Form = () => {
    const[data, setData] = useState({title: "", summary:"", healthScore:0, steps: "", })
      
    const set = (e) => {
-        setData({...data, [e.target.name]: e.target.value })
+
+    var name = e.target.name === "healthScore" && e.target.value === ""? 0: e.target.name
+
+        setData({...data, [name]: e.target.value })
 
         switch (e.target.name) {
             case "title":
@@ -83,14 +86,7 @@ const Form = () => {
     }
     var diets2 = []
 
-
-    const crear = async (e) => {
-        e.preventDefault()
-       const creado = await axios.post("http://localhost:3001/recipes", {...data, diets:diets2})
-       console.log(creado.data)
-    }
-
-    const Checked = () => {
+const Checked = () => {
      diets2 = []
      var si = document.querySelectorAll(".CheckBox")
     for(const si2 of si){
@@ -98,6 +94,14 @@ const Form = () => {
          }
      console.log(diets2)
     }
+    
+    const crear = async (e) => {
+        Checked()
+        e.preventDefault()
+       const creado = await axios.post("http://localhost:3001/recipes", {...data, diets:diets2})
+       alert(creado.data)
+    }
+
     
     return <div className={sty.form} id={sty.form}>
 
@@ -128,7 +132,7 @@ const Form = () => {
         <label htmlFor=""> Diets: </label>
         <div className={sty.steps}>
             {diets.map(e => {
-                return <><input type="checkBox" onClick={Checked} defaultValue={e.id} key={e.id} className="CheckBox" /> {e.name}</>
+                return <><input type="checkBox" defaultValue={e.id} key={e.id} className="CheckBox" /> {e.name}</>
             })
               }
         </div>

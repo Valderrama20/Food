@@ -68,13 +68,14 @@ export const porScore = (data) => (dispatch) => {
     ////// me filtra por dietas \\\\\
 
 export const filtrar = (data) => dispatch => {
- 
- const filtrado = recipes.data.filter(e => typeof e.diets[0] === "string"?e.diets.includes(data):null )
+  
+ const filtrado = recipes.data.filter(e => typeof e.diets[0] === "string"?e.diets.includes(data): null )
 
  if(filtrado.length) dispatch({type: "Filtro" , payload: filtrado})
  else alert(`Not recipes found "${data}"`)
+ init()
 
-init()
+
 }
       //// me trae el detalle\\\\\\
 

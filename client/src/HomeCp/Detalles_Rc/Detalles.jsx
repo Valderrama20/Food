@@ -18,13 +18,16 @@ const Detalle_Rc = () =>  {
    var re =/(<([^>]+)>)/ig
     if(detalle.summary) var eliminaTags = (detalle.summary.replace(re,""))
      console.log(detalle)
-    if(!Object.entries(detalle).length) return <Cargar/>
+
+     var image = detalle.img? detalle.img: "https://img.freepik.com/fotos-premium/pina-gafas-sol-dos-tonos-espacio-texto_185193-7348.jpg"
+   
+     if(!Object.entries(detalle).length) return <Cargar/>
 
     else return <div className={sty.container} id={sty.container}>
         <div className={sty.detalle}>
         <div className={sty.left}>
        <h3>{detalle.name}</h3>
-       <img className={sty.img} src={detalle.img} alt="Food" />
+       <img className={sty.img} src={image} alt="Food" />
        <h4>Steps:</h4>
 
         <div className={sty.steps}>

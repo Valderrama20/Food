@@ -23,12 +23,14 @@ const Home = () => {
       
         <ol>
             {Cars.map(e => {
+                var image = e.image? e.image: "https://img.freepik.com/fotos-premium/pina-gafas-sol-dos-tonos-espacio-texto_185193-7348.jpg"
+                
                  var dietas = e.diets?e.diets.map(e => {return e.name? `${e.name}, `: `${e}, `}):(
                   e.Dieta && e.Dieta.length? e.Dieta.map(e => `${e.name}, `):false
-                 )
+                )
                 return <Card key={e.id}
                               id={e.id}
-                              img={e.image}
+                              img={image}
                                name={e.title}
                                 diets={dietas}/>
             })}
