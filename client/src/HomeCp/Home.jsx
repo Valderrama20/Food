@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Nav from "./Nav";
 import{ Paginado }from "./Paginado";
 import sty from "./General_Css/Home.module.css"
+import Cargar from "./Cargando/cargando";
 
 
 const Home = () => {
@@ -35,7 +36,7 @@ const Home = () => {
         <Paginado/>
         </div>
     )
-    else return "Cargando"
+    else return <Cargar/>
 }
 
 export default Home;

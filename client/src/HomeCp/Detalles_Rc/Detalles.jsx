@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { detalleA } from "../../Redux/actions";
 import sty from "./Detalles.module.css"
 import { Link } from "react-router-dom";
+import Cargar from "../Cargando/cargando"
 
 
 const Detalle_Rc = () =>  { 
@@ -17,7 +18,7 @@ const Detalle_Rc = () =>  {
    var re =/(<([^>]+)>)/ig
     if(detalle.summary) var eliminaTags = (detalle.summary.replace(re,""))
      console.log(detalle)
-    if(!Object.entries(detalle).length) return "cargando"
+    if(!Object.entries(detalle).length) return <Cargar/>
 
     else return <div className={sty.container} id={sty.container}>
         <div className={sty.detalle}>

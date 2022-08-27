@@ -12,6 +12,7 @@ function App() {
     <Route path="/Home" component={Home}/>
     <Route path="/Detalles" component={Detalle_Rc} />
     <Route path="/Formulario" component={Form}/>
+   
     </>
   );
 }

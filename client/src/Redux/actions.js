@@ -16,8 +16,12 @@ export const recipesAll = async (dispatch) => {
 export const serch = (name) => async dispatch => {
  const busqueda = await axios.get(`http://localhost:3001/recipes?name=${name}`)
 
- if(!busqueda.data.length) dispatch({type: "Busqueda", payload: recipes.data})
- else dispatch({type:"Busqueda", payload: busqueda.data}); init()
+ if(!busqueda.data.length){ 
+  alert(`Not recipes found whit the name:"${name}"`)
+  dispatch({type: "Busqueda", payload: recipes.data})
+}
+ else dispatch({type:"Busqueda", payload: busqueda.data}); 
+ init()
 }
 
 //////////// me ordena por orden alfabetico de la "A" a la "Z" y viceversa\\\\\\\\\\\\
@@ -65,10 +69,11 @@ export const porScore = (data) => (dispatch) => {
 
 export const filtrar = (data) => dispatch => {
  
- const filtrado = recipes.data.filter(e => typeof e.diets[0] === "string"?e.diets.includes(data):null
- )
-dispatch({type: "Filtro" , payload: filtrado})
-console.log("filtro activado")
+ const filtrado = recipes.data.filter(e => typeof e.diets[0] === "string"?e.diets.includes(data):null )
+
+ if(filtrado.length) dispatch({type: "Filtro" , payload: filtrado})
+ else alert(`Not recipes found "${data}"`)
+
 init()
 }
       //// me trae el detalle\\\\\\
