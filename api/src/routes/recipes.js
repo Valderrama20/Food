@@ -61,6 +61,7 @@ recipes.get("/detalle/:id", async (req, res) => {
 recipes.post("", async (req, res) => { 
  const {title,summary,healthScore,steps,diets} = req.body
  if(!title || !summary) return res.send("faltan Datos")
+
  try {
   const creado = await Recipe.create({title,summary,healthScore,steps}) 
   
@@ -84,7 +85,7 @@ recipes.get("/all", async (req, res) => {
 const Api = apiCompleta.results
 const Bd = await Recipe.findAll({include: Dieta})
 const datos = [...Api, ...Bd].map(e =>{
-  return  {id: e.id, title: e.title, image: e.image, diets: e.diets || e.Dieta, healthScore: e.healthScore}
+  return  {id: e.id, title: e.title, image: e.image, diets: e.diets || e.Dieta.map(e=> e.name), healthScore: e.healthScore}
 })
 
 res.send(datos)

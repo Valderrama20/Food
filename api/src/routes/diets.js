@@ -14,7 +14,7 @@ diets.get("", async (req, res) => {
     ,"vegan"
     ,"paleolithic"
     ,"primal"
-    ,"whole "
+    ,"whole"
     ,"pescatarian"
      ,"ketogenic"
      ,"fodmap friendly"

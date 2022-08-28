@@ -3,22 +3,28 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import sty from "./formulario.module.css"
 import { recipesAll } from "../../Redux/actions";
-
+import {Link} from "react-router-dom"
 const RE = {LN:/^[a-zA-Z\s]{4,200}$/,
             L2:/^[a-zA-Z\s]{20,500}$/,
             A0:/^(0|[1-9][0-9]?|100)$/}
+
+         let t; 
+         let s ;
+         let n;
+         let st
 
 const Form = () => {
     var dispatch = useDispatch()
     useEffect(() => {dispatch(recipesAll)},[dispatch])
     const diets = useSelector(state => state.Diets) 
-   const[data, setData] = useState({title: "", summary:"", healthScore:0, steps: "", })
+   const[data, setData] = useState({title: "", summary:"", healthScore:"", steps: ""})
      
    const set = (e) => {
 
     var name = e.target.name === "healthScore" && e.target.value === ""? 0: e.target.name
 
         setData({...data, [name]: e.target.value })
+        
 
         switch (e.target.name) {
             case "title":
@@ -27,10 +33,14 @@ const Form = () => {
 
             if(RE.LN.test(e.target.value) || e.target.value === "") {
                 title.classList.remove(sty.Error)
-                error.classList.remove(sty.Error_TitleA)}
+                error.classList.remove(sty.Error_TitleA)
+               t = true
+            }
+               
              else{
                 title.classList.add(sty.Error) 
                 error.classList.add(sty.Error_TitleA)
+                t = false
             }
                 break;
 
@@ -40,10 +50,12 @@ const Form = () => {
             if(RE.L2.test(e.target.value)){
                 summary.classList.remove(sty.Error)
                 error.classList.remove(sty.Error_TitleA)
+                s = true
             }
             else{  
                 summary.classList.add(sty.Error)
                 error.classList.add(sty.Error_TitleA)
+                s = false
             }
 
 
@@ -54,10 +66,12 @@ const Form = () => {
             if(RE.A0.test(e.target.value)) {
                 healthScore.classList.remove(sty.Error)
                 error.classList.remove(sty.Error_TitleA)
+                n = true
             }
             else {
                 healthScore.classList.add(sty.Error)
                 error.classList.add(sty.Error_TitleA)
+                n = false
             }
               break;
 
@@ -67,10 +81,12 @@ const Form = () => {
             if(RE.L2.test(e.target.value)) {
                 steps.classList.remove(sty.Error)
                 error.classList.remove(sty.Error_TitleA)
+                st = true
             }
             else {
                  steps.classList.add(sty.Error)
                  error.classList.add(sty.Error_TitleA)
+                 st = false
                 }
 
             default:
@@ -79,56 +95,67 @@ const Form = () => {
         }     
         /// me deshabilita o activa el boton para crear  
         var si = document.getElementById("btn")
-        if(RE.LN.test(data.title) && RE.L2.test(data.summary)) si.disabled = false
-        else si.disabled = true
-        
+        if(t && s && n && st) si.disabled = false
+         else si.disabled = true 
+         console.log(t,s,n,st)
             
+             
     }
     var diets2 = []
 
-const Checked = () => {
+
+    var checkBox = document.querySelectorAll(".CheckBox")
+   const Checked = () => {
      diets2 = []
-     var si = document.querySelectorAll(".CheckBox")
-    for(const si2 of si){
-     if(si2.checked === true) diets2.push(si2.defaultValue*1)
+     for(const si of checkBox){
+     if(si.checked === true) diets2.push(si.defaultValue*1)
          }
-     console.log(diets2)
     }
     
     const crear = async (e) => {
         Checked()
         e.preventDefault()
        const creado = await axios.post("http://localhost:3001/recipes", {...data, diets:diets2})
+       
+       setData({title: "", summary:"", healthScore:"", steps: ""})
+
+       checkBox.forEach(e => e.checked = false)
+
+       t = false; s = false; n = false; st = false
+
        alert(creado.data)
     }
 
     
-    return <div className={sty.form} id={sty.form}>
-
+    return <div className={sty.container}>
+       
+    <div className={sty.form} id={sty.form}>
+    
     <form onSubmit={crear} >
         <div className={sty.name}>
         <label >Name: </label>
-        <input type="text" name="title" onChange={set} id="title"/>
+        <input type="text" name="title" onChange={set} id="title" value={data.title}/>
         <p className={sty.Error_Title} id="errorT">Debe tener minimo 4 caracteres y maximo 200 sin numeros ni signos especiales</p>
         </div>
 
         <div className={sty.name}>
         <label htmlFor="" >Summary: </label>
-        <input type="text" name="summary" onChange={set} id="summary"/>
+        <input type="text" name="summary" onChange={set} id="summary" value={data.summary}/>
         <p className={sty.Error_Title} id={"errorS"}>Debe tener minimo 20 caracteres y maximo 500 sin numeros ni signos especiales</p>
         </div>
 
          <div className={sty.name}>
         <label htmlFor="" >Score: </label>
-        <input type="number" name="healthScore" onChange={set} id="healthScore"/>
+        <input type="number" name="healthScore" onChange={set} id="healthScore" value={data.healthScore}/>
           <p className={sty.Error_Title} id="errorH"> Solo se aceptan numereros del 0 al 100</p>
         </div>
 
         <div className={sty.name}>
         <label htmlFor="">Steps</label>
-        <input type="text" name="steps" onChange={set} id="steps"/>
+        <input type="text" name="steps" onChange={set} id="steps" value={data.steps}/>
         <p className={sty.Error_Title} id="errorSt">Debe tener minimo 20 caracteres y maximo 500 sin numeros ni signos especiales</p>
         </div>
+
         <label htmlFor=""> Diets: </label>
         <div className={sty.steps}>
             {diets.map(e => {
@@ -137,11 +164,13 @@ const Checked = () => {
               }
         </div>
         
-         <input type="submit" id="btn" disabled/>
+         <input type="submit" id="btn" className={sty.btn} disabled/>
          
     </form>
-       
-          
+         </div>
+         <Link to="/home">
+        <button className={sty.btn}>Volver</button>
+        </Link>
     </div>
 }
 
