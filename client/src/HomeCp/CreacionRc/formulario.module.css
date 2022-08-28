@@ -76,3 +76,8 @@ cursor: pointer;
  padding: 3px 120px 3px 120px;
 cursor: pointer;
 }
+
+.steps{
+    max-width: 300px;
+    background-color: #000;
+}

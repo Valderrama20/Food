@@ -150,14 +150,14 @@ const Form = () => {
           <p className={sty.Error_Title} id="errorH"> Solo se aceptan numereros del 0 al 100</p>
         </div>
 
-        <div className={sty.name}>
-        <label htmlFor="">Steps</label>
+        <div >
+        <label className={sty.name}>Steps</label>
         <input type="text" name="steps" onChange={set} id="steps" value={data.steps}/>
         <p className={sty.Error_Title} id="errorSt">Debe tener minimo 20 caracteres y maximo 500 sin numeros ni signos especiales</p>
         </div>
 
         <label htmlFor=""> Diets: </label>
-        <div className={sty.steps}>
+        <div >
             {diets.map(e => {
                 return <><input type="checkBox" defaultValue={e.id} key={e.id} className="CheckBox" /> {e.name}</>
             })

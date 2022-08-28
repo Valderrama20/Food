@@ -48,7 +48,7 @@ const Detalle_Rc = () =>  {
            detalle.diets.map(e => {return <li key={e.name}>{e.name}</li>}) 
         )}</ol>
         <h4>Summary:</h4>
-        <p>{eliminaTags}</p>
+        <p className={sty.summary}>{eliminaTags}</p>
         </div>
          </div>
          <div className={sty.btn}>
