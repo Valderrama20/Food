@@ -7,11 +7,14 @@ let recipes
 let diets
 
 export const recipesAll = async (dispatch) => {
- recipes = await axios.get("http://localhost:3001/recipes/all")
- diets = await axios.get("http://localhost:3001/diets")
- console.log( recipes.data)
- dispatch({type:"Todas", payload: {recipes: recipes.data, diets: diets.data}})
-
+  
+  if(!recipes || !diets){
+    recipes = await axios.get("http://localhost:3001/recipes/all")
+   diets = await axios.get("http://localhost:3001/diets")
+   dispatch({type:"Todas", payload: {recipes: recipes.data, diets: diets.data}})
+  }
+   
+ 
 }
 
 export const serch = (name) => async dispatch => {
@@ -19,7 +22,6 @@ export const serch = (name) => async dispatch => {
 
  if(!busqueda.data.length){ 
   alert(`Not recipes found whit the name:"${name}"`)
-  dispatch({type: "Busqueda", payload: recipes.data})
 }
  else dispatch({type:"Busqueda", payload: busqueda.data}); 
  init()
@@ -69,7 +71,7 @@ export const porScore = (data) => (dispatch) => {
     ////// me filtra por dietas \\\\\
 
 export const filtrar = (data) => dispatch => {
-    console.log(recipes)
+   
  const filtrado = recipes.data.filter(e => e.diets.includes(data))
  
 
@@ -83,7 +85,6 @@ export const filtrar = (data) => dispatch => {
 
 export const detalleA = (data) => async dispatch =>{
 const detalle = await axios.get(`http://localhost:3001/recipes/detalle/${data}`)
-console.log(detalle.data)
 
 dispatch({type: "Detalle", payload: detalle.data})
 

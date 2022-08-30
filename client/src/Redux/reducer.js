@@ -13,7 +13,7 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 Cars: action.payload.recipes,
-                Paginado: action.payload.recipes.splice(0,9),
+                Paginado: action.payload.recipes.slice(0,9),
                 Diets: action.payload.diets,
                 Detalle: {}
             }

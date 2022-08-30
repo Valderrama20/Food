@@ -5,8 +5,10 @@ import sty from "./formulario.module.css"
 import { recipesAll } from "../../Redux/actions";
 import {Link} from "react-router-dom"
 const RE = {LN:/^[a-zA-Z\s]{4,200}$/,
-            L2:/^[a-zA-Z\s]{20,500}$/,
+            L2:/^[0-9a-zA-Z\S|\s]{50,1000}$/,
             A0:/^(0|[1-9][0-9]?|100)$/}
+            
+
 
          let t; 
          let s ;
@@ -141,7 +143,7 @@ const Form = () => {
         <div className={sty.name}>
         <label htmlFor="" >Summary: </label>
         <input type="text" name="summary" onChange={set} id="summary" value={data.summary}/>
-        <p className={sty.Error_Title} id={"errorS"}>Debe tener minimo 20 caracteres y maximo 500 sin numeros ni signos especiales</p>
+        <p className={sty.Error_Title} id={"errorS"}>Debe tener minimo 50 caracteres y maximo 1000</p>
         </div>
 
          <div className={sty.name}>
@@ -153,7 +155,7 @@ const Form = () => {
         <div >
         <label className={sty.name}>Steps</label>
         <input type="text" name="steps" onChange={set} id="steps" value={data.steps}/>
-        <p className={sty.Error_Title} id="errorSt">Debe tener minimo 20 caracteres y maximo 500 sin numeros ni signos especiales</p>
+        <p className={sty.Error_Title} id="errorSt">Debe tener minimo 50 caracteres y maximo 1000</p>
         </div>
 
         <label htmlFor=""> Diets: </label>

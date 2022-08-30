@@ -8,9 +8,14 @@ const Card = ({id, img, name ,diets}) => {
     return(
       <Link id="Link" to={`/Detalles/${id}`}>
       <div className={sty.Card} id={sty.Card}>
-      <h4>{name}</h4>
+        <div className={sty.name}>
+        <h4>{name}</h4>
+        </div>
       <img src={img} alt="food" />
-      <p>{diets}</p>
+      <div className={sty.diets}>
+         <p>{diets}</p>
+      </div>
+     
       </div>
       </Link>
     )

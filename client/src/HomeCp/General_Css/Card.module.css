@@ -1,14 +1,13 @@
 .Card{
-    
-    width: 200px;
-   height: auto;
-  
+   height: 50%;
+   width: 25%;
   text-align: center;
   border-radius: 10px;
-  display: inline-block;
+  display: inline-table;
   padding: 10px;
   margin: 20px;
-  width: 300px;
+  
+  
 
   background-color: white;
   box-shadow: 0 10px 30px #000;  
@@ -27,6 +26,17 @@
 .Card img{
     max-width: 200px;
     border-radius: 5px;
+}
+
+.name{
+   height: 40px;
+   margin: 10px;
+}
+
+.diets{
+    height: 80px;
+   
+   overflow: auto;
 }
 
 

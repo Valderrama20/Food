@@ -13,11 +13,11 @@ const Detalle_Rc = () =>  {
         if(!Object.entries(detalle).length) dispatch(detalleA(url[url.length-1]*1)) 
     },[dispatch])
      var url = window.location.href.split("/")
-     console.log(detalle)
+    
      
    var re =/(<([^>]+)>)/ig
     if(detalle.summary) var eliminaTags = (detalle.summary.replace(re,""))
-     console.log(detalle)
+    
 
      var image = detalle.img? detalle.img: "https://img.freepik.com/fotos-premium/pina-gafas-sol-dos-tonos-espacio-texto_185193-7348.jpg"
    
