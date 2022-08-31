@@ -155,12 +155,13 @@ const Form = () => {
         <div >
         <label className={sty.name}>Steps</label>
         <input type="text" name="steps" onChange={set} id="steps" value={data.steps}/>
-        <p className={sty.Error_Title} id="errorSt">Debe tener minimo 50 caracteres y maximo 1000</p>
+        <p className={sty.Error_Title} id="errorSt">Debe tener minimo 50 caracteres y maximo 1000 sin numeros ni signos especiales</p>
         </div>
 
         <label htmlFor=""> Diets: </label>
         <div >
             {diets.map(e => {
+                
                 return <><input type="checkBox" defaultValue={e.id} key={e.id} className="CheckBox" /> {e.name}</>
             })
               }

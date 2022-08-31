@@ -4,15 +4,23 @@ import { detalleA } from "../../Redux/actions";
 import sty from "./Detalles.module.css"
 import { Link } from "react-router-dom";
 import Cargar from "../Cargando/cargando"
+import { limpiar } from "../../Redux/actions";
 
 
 const Detalle_Rc = () =>  { 
     const detalle = useSelector(state => state.Detalle)
      const dispatch = useDispatch()
+     
+      var url = window.location.href.split("/")
+
     useEffect(() => {
-        if(!Object.entries(detalle).length) dispatch(detalleA(url[url.length-1]*1)) 
+           dispatch(detalleA(url[url.length-1]*1))
+        return () => {
+            dispatch(limpiar)
+        }
     },[dispatch])
-     var url = window.location.href.split("/")
+
+    
     
      
    var re =/(<([^>]+)>)/ig

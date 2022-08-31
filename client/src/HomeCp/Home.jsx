@@ -10,7 +10,8 @@ import Cargar from "./Cargando/cargando";
 
 const Home = () => {
     const dispatch = useDispatch()
-    useEffect(() => {dispatch(recipesAll)}, [dispatch])
+    useEffect(() => {dispatch(recipesAll)}
+    ,[dispatch])
     
      const Cars = useSelector(state => state.Paginado)
  console.log(Cars);

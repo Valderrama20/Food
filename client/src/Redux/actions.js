@@ -1,8 +1,6 @@
 import axios from "axios";
 import { init } from "../HomeCp/Paginado";
 
-
-
 let recipes
 let diets
 
@@ -94,4 +92,9 @@ export const paginado9 = (data) => dispatch => {
 
   dispatch({type:"siguienteP", payload: data})
 
+}
+
+export const limpiar = (dispatch) =>{
+
+  dispatch({type:"limpiar"})
 }

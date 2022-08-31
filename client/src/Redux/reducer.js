@@ -43,6 +43,11 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 Paginado: action.payload
             }
+        case "limpiar":
+            return{
+                ...state,
+                Detalle:{}
+            }
         default:{
             return state
         }
