@@ -48,6 +48,16 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 Detalle:{}
             }
+        case "70_100":
+            console.log(action.payload, "70_100")
+            return{
+                ...state,
+                Cars: action.payload
+            }
+
+            
+        
+    
         default:{
             return state
         }

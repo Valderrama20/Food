@@ -25,7 +25,12 @@ module.exports = (sequelize) => {
     },
     steps:{
       type: DataTypes.TEXT
+    },
+    ocultar:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     }
+
   },{timestamps: false});
 };
 

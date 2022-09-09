@@ -5,6 +5,7 @@ import Ordenamiento from "./Filtros_Ord/Ord";
 import Filtrado from "./Filtros_Ord/Filtros";
 import { Link } from "react-router-dom";
 import sty from "./General_Css/Nav.module.css"
+import { score_70_100 } from "../Redux/actions";
 
 
 const Nav = () => {
@@ -27,7 +28,7 @@ const Nav = () => {
       
       <input type="text" onChange={info} placeholder="Search..." className={sty.nav}/> 
       
-     
+      <button onClick={() => dispatch(score_70_100)} className={sty.score}>Score 70-100</button>
        <Link to="/Formulario">
       <button className={sty.fo} >Create Recipe 🡲</button>
     </Link>

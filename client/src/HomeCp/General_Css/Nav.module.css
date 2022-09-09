@@ -15,7 +15,7 @@
     border-radius: 20px;
     padding: 10px;
     border: 0,5px solid black;
-    margin: 0px 140px 0px 50px;
+    margin: 0px 100px 0px 50px;
     transition:  1s;
 }
 .nav:focus{
@@ -33,6 +33,7 @@
     border-radius: 10px;
    font-size: 15px;
    transition: 1s;
+   margin-left: 80px;
 }
 .fo:hover{
 
@@ -40,4 +41,15 @@
     text-decoration: none;
     cursor: pointer;
    
+}
+.score{
+border-radius: 20px;
+transition: 1s;
+ 
+}
+
+.score:hover{
+
+box-shadow: 0 5px 20px gray;   
+cursor: pointer;
 }

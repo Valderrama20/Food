@@ -19569,4 +19569,7 @@ const apiCompleta = {
     "totalResults": 5219
 }
 
-module.exports = apiCompleta
+var apiii = apiCompleta.results.map(e => {return{...e, ocultar: false}})
+
+
+module.exports = apiii

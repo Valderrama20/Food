@@ -14,16 +14,18 @@ const Home = () => {
     ,[dispatch])
     
      const Cars = useSelector(state => state.Paginado)
- console.log(Cars);
+ console.log(Cars)
     if(Cars.length)
+    
     return(
        <div className={sty.container}>
         <nav className={sty.nav}> 
         <Nav/> 
         </nav>
-      
+       
         <ol>
             {Cars.map(e => {
+                if(e.ocultar === false){
                 var image = e.image? e.image: "https://img.freepik.com/fotos-premium/pina-gafas-sol-dos-tonos-espacio-texto_185193-7348.jpg"
                 
                  var dietas = e.diets?e.diets.map(e => {return e.name? `${e.name}, `: `${e}, `}):(
@@ -33,7 +35,10 @@ const Home = () => {
                               id={e.id}
                               img={image}
                                name={e.title}
-                                diets={dietas}/>
+                                diets={dietas}
+                                score={e.healthScore}
+                                />}
+                                else return
             })}
         </ol>
         <Paginado/>

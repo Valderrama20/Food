@@ -11,7 +11,7 @@ const recipes = Router()
 recipes.get("", async (req, res) => {
     const {name} = req.query
 
-   const datosApi = apiCompleta.results
+   const datosApi = apiCompleta
    const datosBd = await Recipe.findAll({include: Dieta})
    const filter = [...datosApi, ...datosBd].filter(e => e.title.toLowerCase().includes(name.toLowerCase()))
    
@@ -27,15 +27,15 @@ recipes.get("", async (req, res) => {
 
 recipes.get("/detalle/:id", async (req, res) => { 
     const {id} = req.params
-   console.log("estoy en api               ")
-    const datosApi = apiCompleta.results
+   
+    const datosApi = apiCompleta
    const datosBd = await Recipe.findAll({include: Dieta})
 
    const e = [...datosApi, ...datosBd].find(e => e.id === id*1)
     
    if(!e) return res.send("no hay")
    var pasos
-   console.log(e.analyzedInstructions)
+   
    if(e.steps) pasos = e.steps
    else if(e.analyzedInstructions && e.analyzedInstructions[0]) pasos = e.analyzedInstructions[0].steps.map(e => e.step)
    else pasos = null
@@ -73,7 +73,7 @@ recipes.post("", async (req, res) => {
    }
  }                             
  } catch (e) {
-console.log(e)
+
     
  }
     res.send("Creado con exito")
@@ -82,16 +82,61 @@ console.log(e)
           
 ///////////todas las recetas \\\\\\
 recipes.get("/all", async (req, res) => {
-const Api = apiCompleta.results
+const Api = apiCompleta
 const Bd = await Recipe.findAll({include: Dieta})
 const datos = [...Api, ...Bd].map(e =>{
-  return  {id: e.id, title: e.title, image: e.image, diets: e.diets || e.Dieta.map(e=> e.name), healthScore: e.healthScore}
+  return  {id: e.id, title: e.title, image: e.image, diets: e.diets || e.Dieta.map(e=> e.name), healthScore: e.healthScore, ocultar: e.ocultar}
 })
 
 res.send(datos)
 
 })
 
+// recipes.put("/modificar/:id", (req, res) =>{
+//     const id = req.params
+//  const recipes = apiCompleta
+ 
+//  const filtrado = apiCompleta.results.filter(e => e.id === id )
+// const modificado = filtrado.
+
+
+//   res.send("holaa mundo")
+// })
+
+// recipes.get("/de70" ,async (req, res) => {
+//   const  api = apiCompleta.results
+//   const bd = await Recipe.findAll({include: Dieta})
+//   const filtrado = [...api, ...bd].filter(e => e.healthScore >= 70)
+//   const enviar = filtrado.map(e =>{
+//     return  {id: e.id, title: e.title, image: e.image, diets: e.diets || e.Dieta.map(e=> e.name), healthScore: e.healthScore}
+//   })
+
+//   res.send(enviar) 
+// })
+
+
+            //// Practicas
+        /// para eliminar datos utilizar destroy y la sintasis igual a un findAll con where
+
+// recipes.put("/cambiar", async (req, res) => {
+//     const {id, title}= req.body
+
+    
+//     try {
+//       await Recipe.update({ title: title }, {
+//         where: {
+//           id: id
+//         }
+//       })
+//       res.send("modificado")
+//     } catch (error) {
+//       console.log(error)
+//       res.send("error")
+//     }
+   
+    
+  
+// })
 
 
 
