@@ -7,8 +7,8 @@ let diets
 export const recipesAll = async (dispatch) => {
   
   if(!recipes || !diets){
-    recipes = await axios.get("http://localhost:3001/recipes/all")
-   diets = await axios.get("http://localhost:3001/diets")
+    recipes = await axios.get("/recipes/all")
+   diets = await axios.get("/diets")
    console.log(recipes.data)
    dispatch({type:"Todas", payload: {recipes: recipes.data, diets: diets.data}})
   }
@@ -26,7 +26,7 @@ init()
 }
 
 export const serch = (name) => async dispatch => {
- const busqueda = await axios.get(`http://localhost:3001/recipes?name=${name}`)
+ const busqueda = await axios.get(`/recipes?name=${name}`)
 
  if(!busqueda.data.length){ 
   alert(`Not recipes found whit the name:"${name}"`)
@@ -90,7 +90,7 @@ export const filtrar = (data) => dispatch => {
       //// me trae el detalle\\\\\\
 
 export const detalleA = (data) => async dispatch =>{
-const detalle = await axios.get(`http://localhost:3001/recipes/detalle/${data}`)
+const detalle = await axios.get(`/recipes/detalle/${data}`)
 dispatch({type: "Detalle", payload: detalle.data})
 
 }
