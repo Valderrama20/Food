@@ -117,7 +117,7 @@ const Form = () => {
     const crear = async (e) => {
         Checked()
         e.preventDefault()
-       const creado = await axios.post("http://localhost:3001/recipes", {...data, diets:diets2})
+       const creado = await axios.post("/recipes", {...data, diets:diets2})
        
        setData({title: "", summary:"", healthScore:"", steps: ""})
 
