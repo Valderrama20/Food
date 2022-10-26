@@ -11,7 +11,10 @@ const recipes = Router()
 recipes.get("/", async (req, res) => {
     const {name} = req.query
 
-   const datosApi = apiCompleta
+  //  const datosApi = apiCompleta
+
+   const datosApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.API_KEY}&addRecipeInformation=true&number=100`)
+
    const datosBd = await Recipe.findAll({include: Dieta})
    const filter = [...datosApi, ...datosBd].filter(e => e.title.toLowerCase().includes(name.toLowerCase()))
    
@@ -29,7 +32,11 @@ recipes.get("/detalle/:id", async (req, res) => {
     const {id} = req.params
    
     
-    const datosApi = apiCompleta
+    // const datosApi = apiCompleta
+
+
+    const datosApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.API_KEY}&addRecipeInformation=true&number=100`)
+
    const datosBd = await Recipe.findAll({include: Dieta})
 
    const e = [...datosApi, ...datosBd].find(e => e.id === id*1)
@@ -83,7 +90,10 @@ recipes.post("/", async (req, res) => {
           
 ///////////todas las recetas \\\\\\
 recipes.get("/all", async (req, res) => {
-const Api = apiCompleta
+// const Api = apiCompleta
+
+const Api = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.API_KEY}&addRecipeInformation=true&number=100`)
+
 const Bd = await Recipe.findAll({include: Dieta})
 const datos = [...Api, ...Bd].map(e =>{
   return  {id: e.id, title: e.title, image: e.image, diets: e.diets || e.Dieta.map(e=> e.name), healthScore: e.healthScore, ocultar: e.ocultar}
