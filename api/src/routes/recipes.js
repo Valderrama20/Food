@@ -8,7 +8,7 @@ const recipes = Router()
 //Obtener un listado de las recetas que contengan la palabra ingresada como query parameter
 //Si no existe ninguna receta mostrar un mensaje adecuado
 
-recipes.get("", async (req, res) => {
+recipes.get("/", async (req, res) => {
     const {name} = req.query
 
    const datosApi = apiCompleta
@@ -58,7 +58,7 @@ recipes.get("/detalle/:id", async (req, res) => {
 //Crea una receta en la base de datos relacionada con sus tipos
 // de dietas.
 
-recipes.post("", async (req, res) => { 
+recipes.post("/", async (req, res) => { 
  const {title,summary,healthScore,steps,diets} = req.body
  if(!title || !summary) return res.send("faltan Datos")
 

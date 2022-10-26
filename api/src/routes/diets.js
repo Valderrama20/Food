@@ -4,7 +4,7 @@ const {Dieta} = require("../db.js")
 
 const diets = Router()
 
-diets.get("", async (req, res) => {
+diets.get("/", async (req, res) => {
     const dietasBd = await Dieta.findAll()
     if(dietasBd.length) return res.send(dietasBd)
     else{
