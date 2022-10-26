@@ -28,6 +28,7 @@ recipes.get("/", async (req, res) => {
 recipes.get("/detalle/:id", async (req, res) => { 
     const {id} = req.params
    
+    
     const datosApi = apiCompleta
    const datosBd = await Recipe.findAll({include: Dieta})
 

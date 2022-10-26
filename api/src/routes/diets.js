@@ -3,6 +3,7 @@ const apiCompleta = require("../Api_food/variablesApi")
 const {Dieta} = require("../db.js")
 
 const diets = Router()
+ 
 
 diets.get("/", async (req, res) => {
     const dietasBd = await Dieta.findAll()
