@@ -8,21 +8,19 @@ const recipes = Router()
 //Obtener un listado de las recetas que contengan la palabra ingresada como query parameter
 //Si no existe ninguna receta mostrar un mensaje adecuado
 
-recipes.get("/", async (req, res) => {
+recipes.get("", async (req, res) => {
     const {name} = req.query
 
-  //  const datosApi = apiCompleta
-
-   const datosApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.API_KEY}&addRecipeInformation=true&number=100`)
-
+   const datosApi = apiCompleta
    const datosBd = await Recipe.findAll({include: Dieta})
-   const filter = [...datosApi.data.results, ...datosBd].filter(e => e.title.toLowerCase().includes(name.toLowerCase()))
+   const filter = [...datosApi, ...datosBd].filter(e => e.title.toLowerCase().includes(name.toLowerCase()))
    
    if(filter) res.send(filter)
     else res.send("No se encontraron recetas")
   
 })
 
+// const Api = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.API_KEY}&addRecipeInformation=true&number=100`)
 //GET /recipes/{idReceta}:
 //Obtener el detalle de una receta en particular
 //Debe traer solo los datos pedidos en la ruta de detalle de receta
@@ -31,15 +29,10 @@ recipes.get("/", async (req, res) => {
 recipes.get("/detalle/:id", async (req, res) => { 
     const {id} = req.params
    
-    
-    // const datosApi = apiCompleta
-
-
-    const datosApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.API_KEY}&addRecipeInformation=true&number=100`)
-
+    const datosApi = apiCompleta
    const datosBd = await Recipe.findAll({include: Dieta})
 
-   const e = [...datosApi.data.results, ...datosBd].find(e => e.id === id*1)
+   const e = [...datosApi, ...datosBd].find(e => e.id === id*1)
     
    if(!e) return res.send("no hay")
    var pasos
@@ -66,7 +59,7 @@ recipes.get("/detalle/:id", async (req, res) => {
 //Crea una receta en la base de datos relacionada con sus tipos
 // de dietas.
 
-recipes.post("/", async (req, res) => { 
+recipes.post("", async (req, res) => { 
  const {title,summary,healthScore,steps,diets} = req.body
  if(!title || !summary) return res.send("faltan Datos")
 
@@ -90,13 +83,9 @@ recipes.post("/", async (req, res) => {
           
 ///////////todas las recetas \\\\\\
 recipes.get("/all", async (req, res) => {
-// const Api = apiCompleta
-
-const Api = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.API_KEY}&addRecipeInformation=true&number=100`)
-
+const Api = apiCompleta
 const Bd = await Recipe.findAll({include: Dieta})
-console.log(Api.data)
-const datos = [...Api.data.results, ...Bd].map(e =>{
+const datos = [...Api, ...Bd].map(e =>{
   return  {id: e.id, title: e.title, image: e.image, diets: e.diets || e.Dieta.map(e=> e.name), healthScore: e.healthScore, ocultar: e.ocultar}
 })
 
